@@ -1,0 +1,6 @@
+terminator
+rofi
+i3lock-fancy
+setxkbmap
+xinput | libinput
+nitrogen
