@@ -4,3 +4,5 @@ i3lock-fancy
 setxkbmap
 xinput | libinput
 nitrogen
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
