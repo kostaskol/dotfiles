@@ -2,8 +2,9 @@ set nocompatible
 filetype off
 
 syntax enable
-set relativenumber
+set number relativenumber
 
+" Required to use termguicolors within TMUX
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
 let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
@@ -24,6 +25,15 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 
 Plugin 'vim-polyglot'
+
+Plugin 'vim-syntastic/syntastic'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -47,3 +57,20 @@ set cursorline
 set showmatch
 
 let python_highlight_all = 1
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='base16'
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
