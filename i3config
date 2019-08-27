@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-client.focused #859900 #a01399 #fdf6e3 #859900
+# client.focused #859900 #a01399 #fdf6e3 #859900
 
 set $mod Mod1
 
@@ -32,7 +32,7 @@ font pango:monofur 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec terminator --working-directory=$(xcwd)
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -190,6 +190,9 @@ exec --no-startup-id xinput set-prop 10 'Natural Scrolling Enabled' 1
 exec --no-startup-id xinput set-prop 10 'libinput Natural Scrolling Enabled' 1 
 
 # Background
-exec --no-startup-id nitrogen --set-zoom-fill ~/Pictures/background.jpg
+exec_always --no-startup-id nitrogen --set-zoom-fill ~/Pictures/Wood.jpg
 
 for_window [class="^.*"] border pixel 1
+
+# exec_always --no-startup-id killall back4.sh
+# exec_always --no-startup-id $HOME/.back4/back4.sh 0.010 $HOME/.back4/gifs/beautycity.gif

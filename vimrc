@@ -11,9 +11,9 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 set termguicolors
 " colorscheme desert-night
 set background=dark
-colorscheme base16-tomorrow-night
+colorscheme gruvbox
 
-hi CursorLine guifg=NONE guibg=#473f31 guisp=NONE gui=NONE cterm=bold
+hi CursorLine guifg=NONE guisp=NONE gui=NONE cterm=bold
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -76,10 +76,10 @@ let python_highlight_all = 1
 " let g:syntastic_check_on_wq = 1
 
 " Ale
-let g:ale_linters = {
-\    'python': ['pylint']
-\}
-let g:ale_open_list = 1
+" let g:ale_linters = {
+" \    'python': ['pylint']
+" \}
+" let g:ale_open_list = 1
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -117,3 +117,13 @@ augroup AutoSaveFolds
     autocmd BufWinLeave * mkview
     autocmd BufWinEnter * silent loadview
 augroup END
+
+" solid underscore
+let &t_SI .= "\<Esc>[5 q"
+" solid block
+let &t_EI .= "\<Esc>[2 q"
+" 1 or 0 -> blinking block
+" 3 -> blinking underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
