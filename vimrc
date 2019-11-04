@@ -54,7 +54,6 @@ Plugin 'vim-scripts/indentpython.vim'
 
 Plugin 'vim-polyglot'
 
-" Plugin 'vim-syntastic/syntastic'
 Plugin 'w0rp/ale.git'
 
 Plugin 'vim-airline/vim-airline'
@@ -65,6 +64,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'severin-lemaignan/vim-minimap'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 call vundle#end()
 " filetype plugin indent on
@@ -110,7 +113,7 @@ set undofile
 set undodir=~/.vim/undodir
 
 " Ruler
-set colorcolumn=80
+set colorcolumn=80,120
 highlight ColorColumn ctermbg=lightgrey
 
 set mouse=a
@@ -125,10 +128,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-let g:lucius_style="light"
-" let g:lucius_contrast="low"
+let g:lucius_style="dark"
+let g:lucius_contrast="high"
 colorscheme lucius
-set background=light
+set background=dark
 
 " if has ("autocmd")
 "     autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -151,11 +154,12 @@ if has("autocmd")
         \| exe "normal! g'\"" | endif
 endif
 
+
 set list
 " `tab` in the following contains two
-" characters (a » and an invisible unicode
-" character (U-2800)
+" characters (a » and an invisible unicode character (U-2800)
 set listchars=space:·,tab:»⠀
+set autoread
 
 augroup AutoSaveFolds
     autocmd!
@@ -172,3 +176,19 @@ augroup END
 " Recent versions of xterm (282 or above) also support
 " 5 -> blinking vertical bar
 " 6 -> solid vertical bar
+
+" NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+map <F3> :NERDTreeToggle<CR>
+
+let g:NERDTREEWinSize=20
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+
+" Tabs
+map <S-Left> :tabp<CR>
+map <S-Right> :tabn<CR>

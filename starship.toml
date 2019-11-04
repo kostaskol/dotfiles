@@ -1,0 +1,27 @@
+[character]
+symbol = "↬"
+vicmd_symbol = "↫"
+use_symbol_for_status = true
+
+
+[battery]
+disabled = true
+
+
+[memory_usage]
+show_percentage = true
+show_swap = false
+threshold = 5
+symbol = "Mem:"
+style = "bold dimmed white"
+disabled = false
+
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+
+[git_status]
+modified = "~"
+modified_count.enabled = true
+modified_count.style = "green"
