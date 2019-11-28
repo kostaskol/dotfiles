@@ -38,7 +38,7 @@ bindsym $mod+Return exec terminator --working-directory=$(xcwd)
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec LC_ALL=en_US.UTF-8 rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -49,12 +49,6 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -182,6 +176,9 @@ smart_gaps on
 gaps inner 15
 gaps outer 15
 
+# Rounded
+border_radius 8
+
 # Touchpad
 # exec --no-startup-id synclient VertScrollDelta=-113
 # exec --no-startup-id synclient TapButton1=1
@@ -190,7 +187,7 @@ exec --no-startup-id xinput set-prop 10 'Natural Scrolling Enabled' 1
 exec --no-startup-id xinput set-prop 10 'libinput Natural Scrolling Enabled' 1 
 
 # Background
-exec_always --no-startup-id nitrogen --set-zoom-fill ~/Pictures/Wood.jpg
+exec_always --no-startup-id nitrogen --set-zoom-fill ~/Pictures/Wallpapers/grey-wood.jpg
 
 for_window [class="^.*"] border pixel 1
 

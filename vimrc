@@ -38,14 +38,6 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'roxma/nvim-yarp'
 
-Plugin 'ncm2/ncm2'
-
-Plugin 'ncm2/ncm2-bufword'
-
-Plugin 'ncm2/ncm2-path'
-
-Plugin 'ncm2/ncm2-jedi'
-
 Plugin 'Konfekt/FastFold'
 
 Plugin 'tmhedberg/SimpylFold'
@@ -54,7 +46,7 @@ Plugin 'vim-scripts/indentpython.vim'
 
 Plugin 'vim-polyglot'
 
-Plugin 'w0rp/ale.git'
+Plugin 'dense-analysis/ale.git'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -68,6 +60,21 @@ Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'morhetz/gruvbox'
+
+Plugin 'arcticicestudio/nord-vim'
+
+Plugin 'rakr/vim-one'
+
+" Adds <leader>yw
+" and <leader>pw keymaps for switching
+" splits
+Plugin 'wesQ3/vim-windowswap'
+
+Plugin 'fugalh/desert.vim.git'
+
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 call vundle#end()
 " filetype plugin indent on
@@ -94,11 +101,11 @@ set showmatch
 let python_highlight_all = 1
 
 let g:python3_host_prog = '/usr/bin/python3'
-let g:python_host_prog='/usr/bin/python2'
+let g:python_host_prog='/usr/bin/python'
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
+let g:airline_theme='base16_chalk'
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -106,6 +113,7 @@ let g:ctrlp_map = '<c-p>'
 " Various Vim settings
 set incsearch
 set hlsearch
+nnoremap <CR> :noh<CR><CR>
 set cpoptions+=x " Stay at search item when pressing <esc>
 set nowrap
 
@@ -128,20 +136,33 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-let g:lucius_style="dark"
-let g:lucius_contrast="high"
-colorscheme lucius
 set background=dark
+" ==================
+" || Lucius Theme ||
+" ==================
+" let g:lucius_style="dark"
+" let g:lucius_contrast="high"
+" colorscheme lucius
+" ===================
+" || Gruvbox Theme ||
+" ===================
+colorscheme gruvbox
+let g:gruvbox_italic = 0
+let g:gruvbox_contrast_dark = 'medium'
+" ===============
+" || One Theme ||
+" ===============
+" colorscheme one
 
 " if has ("autocmd")
 "     autocmd BufEnter * call ncm2#enable_for_buffer()
 " endif
-
-set completeopt=menuone,noselect,noinsert
-let ncm2#popup_delay = 5
-let ncm2#complete_length = [[1,1]]
-let g:ncm2#matcher = 'substrfuzzy'
-
+" 
+" set completeopt=menuone,noselect,noinsert
+" let ncm2#popup_delay = 5
+" let ncm2#complete_length = [[1,1]]
+" let g:ncm2#matcher = 'substrfuzzy'
+" 
 " set pumheight=5
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -150,7 +171,7 @@ inoremap <silent> <expr> <CR> (pumvisible() && empty(v:completed_item)) ? "\<c-y
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 if has("autocmd")
-    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    au BufReadPost ?* if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal! g'\"" | endif
 endif
 
@@ -163,8 +184,8 @@ set autoread
 
 augroup AutoSaveFolds
     autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent! loadview
+    autocmd BufWinLeave ?* mkview
+    autocmd BufWinEnter ?* silent! loadview
 augroup END
 
 " solid underscore
@@ -192,3 +213,9 @@ let NERDTreeDirArrows = 1
 " Tabs
 map <S-Left> :tabp<CR>
 map <S-Right> :tabn<CR>
+
+" Markdown Preview
+let vim_markdown_preview_toggle=3
+let vim_markdown_preview_hotkey='<C-l>'
+let vim_markdown_preview_browser='Firefox'
+let vim_markdown_preview_use_xdg_open=1
