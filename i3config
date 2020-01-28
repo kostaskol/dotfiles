@@ -1,16 +1,19 @@
-set_from_resource $darkred color1 #ffffff
-set_from_resource $darkwhite color7 #e6e6e6
-set $black #282828
-set $darkblack #1d2021
+# Meta key
+set $mod Mod1
+
+set_from_resource $darkwhite   color7  #d9d9d9
+set_from_resource $white       color15 #ffffff
+# Use custom colors for black
+set $black       #282828
+set $darkblack   #1d2021
+set $orange      #ff5500
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
-client.unfocused        $black      $black      $white      $darkblack  $darkblack
+client.focused          $black     $black      $orange  $darkblack  $darkblack
+client.unfocused        $black      $black      $darkwhite  $darkblack  $darkblack
 client.focused_inactive $black      $black      $white      $darkblack  $darkblack
-client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.urgent           $black      $black      $black      $black      $black
 client.background       $black
-
-set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -37,7 +40,12 @@ bindsym $mod+Return exec terminator --working-directory=$(xcwd)
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec LC_ALL=en_US.UTF-8 rofi -show run
+# bindsym $mod+d exec --no-startup-id rofi 
+# -display-drun " /find : " -display-run " /run : " -location 7
+# -columns 1 -width 20 -lines 15 -padding 2 -hide-scrollbar
+# -drun-icon-theme "Papirus" -font "Monaco 12"
+bindsym $mod+d exec LC_ALL=en_US.UTF-8 rofi -show drun
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -131,7 +139,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec oblogout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -161,11 +170,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start polybar
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
-
-# Start tint2
-exec --no-startup-id tint2
-# exec_always --no-startup-id killall -SIGUSR1 tint2
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Disable borders
 for_window [class="*"] border pixel 0
@@ -193,9 +198,8 @@ exec --no-startup-id xinput set-prop 10 'libinput Natural Scrolling Enabled' 1
 exec_always --no-startup-id nitrogen --set-zoom-fill ~/Pictures/Wallpapers/paper-plane-gradient.png
 
 for_window [class="^.*"] border pixel 1
+for_window [class="Oblogout"] floating enable
 
-# exec_always --no-startup-id killall back4.sh
-# exec_always --no-startup-id $HOME/.back4/back4.sh 0.010 $HOME/.back4/gifs/beautycity.gif
-
-exec --no-startup-id picom --backend xrender
-
+exec --no-startup-id tint2
+exec --no-startup-id conky
+exec --no-startup-id picom

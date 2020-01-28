@@ -1,0 +1,9 @@
+rofi.modi: run,drun
+rofi.sidebar-mode: false
+rofi.terminal: terminator
+rofi.width: 20
+rofi.lines: 8
+rofi.location: 7
+rofi.fuzzy: true
+rofi.font: Monaco 12
+
