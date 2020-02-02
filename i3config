@@ -203,3 +203,6 @@ for_window [class="Oblogout"] floating enable
 exec --no-startup-id tint2
 exec --no-startup-id conky
 exec --no-startup-id picom
+
+# Start dunst
+exec --no-startup-id dunst
