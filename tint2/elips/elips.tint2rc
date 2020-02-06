@@ -151,7 +151,11 @@ border_width = 0
 border_sides = LR
 border_content_tint_weight = 0
 background_content_tint_weight = 0
-background_color = #ffffff 80
+# Light background
+# background_color = #ffffff 80
+
+# Dark background
+background_color = #242424 90
 border_color = #cb5470 100
 background_color_hover = #ffffaa 100
 border_color_hover = #000000 100
@@ -186,7 +190,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PPPPPEFTPPPC::P
+panel_items = PPEFTPPPPC::P
 panel_size = 100% 40
 panel_margin = 0 5
 panel_padding = 4 4 4
@@ -364,7 +368,7 @@ execp_icon_h = 0
 button = new
 button_icon = ~/.config/tint2/elips/icons/launch.png
 button_text =
-button_lclick_command = rofi -show drun
+button_lclick_command = rofi -modi run,drun -show drun -display-drun ' /find : ' -display-run ' /run : ' -location 7 -xoffset -325 -yoffset 175 -line-padding 2 -columns 1 -width 20 -lines 7 -padding 2 -hide-scrollbar  -drun-icon-theme 'Papirus' -font 'Fira Code 9'
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
@@ -377,48 +381,15 @@ button_centered = 0
 button_max_icon_size = 0
 
 #-------------------------------------
-# Button 0.1
-button = new
-button_icon =  ~/.icons/custom/drops/compass.svg
-button_text =
-button_lclick_command = opera
-button_rclick_command = 
-button_mclick_command = 
-button_uwheel_command =
-button_dwheel_command =
-button_font_color = #000000 100
-button_padding = 0 0
-button_background_id = 0
-button_centered = 0
-button_max_icon_size = 30
-
-#-------------------------------------
-# Button 0.2
-button = new
-button_icon =  ~/.icons/custom/drops/code-outline.svg
-button_text =
-button_lclick_command = code
-button_rclick_command = 
-button_mclick_command = 
-button_uwheel_command =
-button_dwheel_command =
-button_font_color = #000000 100
-button_padding = 0 0
-button_background_id = 0
-button_centered = 0
-button_max_icon_size = 30
-
-
-#-------------------------------------
 # Button 1
 button = new
 button_icon =  ~/.config/tint2/elips/icons/music.png
 button_text = 
-button_lclick_command = spotify
-button_rclick_command = 
+button_lclick_command =  mpc -p 6600 toggle
+button_rclick_command =  mpc -p 6600 stop
 button_mclick_command = 
-button_uwheel_command =
-button_dwheel_command =
+button_uwheel_command = mpc -p 6600 next
+button_dwheel_command = mpc -p 6600 prev
 button_font_color = #000000 100
 button_padding = 2 0
 button_background_id = 0
@@ -426,13 +397,14 @@ button_centered = 0
 button_max_icon_size = 30
 
 
+
 #-------------------------------------
 # Button 2
 button = new
 button_icon = ~/.icons/custom/drops/telegram.png
 button_text = 
-button_lclick_command = mailspring
-button_rclick_command =
+button_lclick_command = /opt/Telegram/Telegram
+button_rclick_command = killall /opt/Telegram/Telegram
 button_mclick_command = 
 button_uwheel_command = 
 button_dwheel_command = 
@@ -479,7 +451,7 @@ button_max_icon_size = 24
 button = new
 button_icon = ~/.config/tint2/elips/icons/poweroff.png
 button_text = 
-button_lclick_command = oblogout
+button_lclick_command = bl-exit
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
