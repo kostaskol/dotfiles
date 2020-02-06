@@ -22,4 +22,4 @@ This repository contains dotfiles for the following:
 
 ## Screenshots
 
-![screenshot-1](https://github.com/kostaskol/dotfiles/screenshots/screenshot-1.png)
+![screenshot-1](https://github.com/kostaskol/dotfiles/blob/master/screenshots/screenshot-1.png)
