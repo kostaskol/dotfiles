@@ -15,68 +15,61 @@ set termguicolors
 
 hi CursorLine guifg=NONE guisp=NONE gui=NONE cterm=bold
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'majutsushi/tagbar'
 
-Plugin 'majutsushi/tagbar'
+Plug 'jonathanfilip/vim-lucius'
 
-Plugin 'jonathanfilip/vim-lucius'
+Plug 'davidhalter/jedi-vim'
 
-Plugin 'davidhalter/jedi-vim'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Vimjas/vim-python-pep8-indent'
 
-Plugin 'Vimjas/vim-python-pep8-indent'
+Plug 'tweekmonster/impsort.vim'
 
-Plugin 'tweekmonster/impsort.vim'
+Plug 'wsdjeg/FlyGrep.vim'
 
-Plugin 'wsdjeg/FlyGrep.vim'
+Plug 'airblade/vim-gitgutter'
 
-Plugin 'airblade/vim-gitgutter'
+Plug 'roxma/nvim-yarp'
 
-Plugin 'roxma/nvim-yarp'
+Plug 'Konfekt/FastFold'
 
-Plugin 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
 
-Plugin 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
 
-Plugin 'vim-scripts/indentpython.vim'
+Plug 'dense-analysis/ale'
 
-Plugin 'vim-polyglot'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'dense-analysis/ale.git'
+Plug 'tpope/vim-surround'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'kien/ctrlp.vim'
 
-Plugin 'tpope/vim-surround'
+Plug 'severin-lemaignan/vim-minimap'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'severin-lemaignan/vim-minimap'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'morhetz/gruvbox'
 
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'arcticicestudio/nord-vim'
 
-Plugin 'morhetz/gruvbox'
-
-Plugin 'arcticicestudio/nord-vim'
-
-Plugin 'rakr/vim-one'
+Plug 'rakr/vim-one'
 
 " Adds <leader>yw
 " and <leader>pw keymaps for switching
 " splits
-Plugin 'wesQ3/vim-windowswap'
+Plug 'wesQ3/vim-windowswap'
 
-Plugin 'fugalh/desert.vim.git'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
-Plugin 'JamshedVesuna/vim-markdown-preview'
-
-call vundle#end()
+call plug#end()
 " filetype plugin indent on
 filetype indent plugin on
 
@@ -146,13 +139,13 @@ set background=dark
 " ===================
 " || Gruvbox Theme ||
 " ===================
-colorscheme gruvbox
-let g:gruvbox_italic = 0
-let g:gruvbox_contrast_dark = 'medium'
+" colorscheme gruvbox
+" let g:gruvbox_italic = 0
+" let g:gruvbox_contrast_dark = 'medium'
 " ===============
 " || One Theme ||
 " ===============
-" colorscheme one
+colorscheme one
 
 " if has ("autocmd")
 "     autocmd BufEnter * call ncm2#enable_for_buffer()
