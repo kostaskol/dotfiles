@@ -5,20 +5,21 @@
 This repository contains dotfiles for the following:
 
 * ### WMs
-    * i3-gaps-rounded
+    * [i3-gaps-rounded](https://aur.archlinux.org/packages/i3-gaps-rounded-git/) (Patched i3-gaps)
 * ### Desktop
     * Rofi (in Xresources)
-    * Dunst
+    * [Dunst](https://dunst-project.org/)
 * ### Status bars
-    * tint2
-    * polybar
+    * [tint2](https://gitlab.com/o9000/tint2)
+    * [polybar](https://github.com/polybar/polybar)
 * ### Terminal
     * neovim (colors/vimrc)
     * tmux
     * fish
-    * starship
+    * [starship](https://starship.rs/)
 * ### General:
     * wallpapers
+    * login manager theme (sddm: [sober](https://store.kde.org/p/1302093/))
 
 ## Screenshots
 
