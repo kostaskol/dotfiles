@@ -12,6 +12,7 @@ This repository contains dotfiles for the following:
 * ### Status bars
     * [tint2](https://gitlab.com/o9000/tint2)
     * [polybar](https://github.com/polybar/polybar)
+    	* [theme](https://github.com/adi1090x/polybar-themes)
 * ### Terminal
     * neovim (colors/vimrc)
     * tmux
