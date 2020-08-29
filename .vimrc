@@ -10,6 +10,13 @@ set number relativenumber
 " Required to use termguicolors within TMUX
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
 let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+augroup myCmds
+    au!
+    autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
 
 set termguicolors
 
@@ -21,9 +28,7 @@ Plug 'majutsushi/tagbar'
 
 Plug 'jonathanfilip/vim-lucius'
 
-Plug 'davidhalter/jedi-vim'
-
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 Plug 'Vimjas/vim-python-pep8-indent'
 
@@ -48,29 +53,37 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-surround'
 
-Plug 'kien/ctrlp.vim'
-
-Plug 'severin-lemaignan/vim-minimap'
-
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'morhetz/gruvbox'
 
-Plug 'arcticicestudio/nord-vim'
-
 Plug 'rakr/vim-one'
 
-" Adds <leader>yw
-" and <leader>pw keymaps for switching
-" splits
-Plug 'wesQ3/vim-windowswap'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
-Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+Plug 'junegunn/fzf.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'craigemery/vim-autotag'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'vim-ruby/vim-ruby'
+
+Plug 'kjssad/quantum.vim'
+
+Plug 'NLKNguyen/papercolor-theme'
+
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
-" filetype plugin indent on
 filetype indent plugin on
 
 " Enable folding
@@ -98,10 +111,12 @@ let g:python_host_prog='/usr/bin/python'
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_chalk'
+" let g:airline_theme='base16_chalk'
+let g:airline_theme='onehalfdark'
 
 " CtrlP
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
+
 
 " Various Vim settings
 set incsearch
@@ -114,13 +129,13 @@ set undofile
 set undodir=~/.vim/undodir
 
 " Ruler
-set colorcolumn=80,120
+set colorcolumn=120
 highlight ColorColumn ctermbg=lightgrey
 
 set mouse=a
 set smartcase
 set wrapscan
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Easy split movement
 
@@ -129,11 +144,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-set background=dark
+set background=light
 " ==================
 " || Lucius Theme ||
 " ==================
-" let g:lucius_style="dark"
+" let g:lucius_style="light"
 " let g:lucius_contrast="high"
 " colorscheme lucius
 " ===================
@@ -146,17 +161,14 @@ set background=dark
 " || One Theme ||
 " ===============
 colorscheme one
+" colorscheme onehalfdark
 
-" if has ("autocmd")
-"     autocmd BufEnter * call ncm2#enable_for_buffer()
-" endif
-" 
-" set completeopt=menuone,noselect,noinsert
-" let ncm2#popup_delay = 5
-" let ncm2#complete_length = [[1,1]]
-" let g:ncm2#matcher = 'substrfuzzy'
-" 
-" set pumheight=5
+set completeopt=menuone,noselect,noinsert
+let ncm2#popup_delay = 5
+let ncm2#complete_length = [[1,1]]
+let g:ncm2#matcher = 'substrfuzzy'
+
+set pumheight=5
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -172,8 +184,11 @@ endif
 set list
 " `tab` in the following contains two
 " characters (a » and an invisible unicode character (U-2800)
-set listchars=space:·,tab:»⠀
+set listchars=tab:»⠀
 set autoread
+au CursorHold,CursorHoldI * checktime
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 augroup AutoSaveFolds
     autocmd!
@@ -204,11 +219,48 @@ let NERDTreeDirArrows = 1
 
 
 " Tabs
-map <S-Left> :tabp<CR>
-map <S-Right> :tabn<CR>
+map <S-h> :tabp<CR>
+map <S-l> :tabn<CR>
+" Creates a new tab with the current file's contents
+map <leader>u :tab split<CR>
+map <leader>v :vsplit<CR>
+map <leader>h :split<CR>
 
 " Markdown Preview
 let vim_markdown_preview_toggle=3
 let vim_markdown_preview_hotkey='<C-l>'
 let vim_markdown_preview_browser='Firefox'
 let vim_markdown_preview_use_xdg_open=1
+
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio']
+    \ }
+
+set noesckeys
+
+" fzf configuration
+" Jump to an existing buffer if possible
+let g:fzf_buffers_jump = 1
+
+" Customize the options used by 'git log'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+let g:fzf_tags_command = 'ctags -R'
+
+nnoremap <leader><leader> :GFiles<CR>
+nnoremap <leader>p        :Files<CR>
+nnoremap <leader>t        :Tags<CR>
+nnoremap <leader>g        :BTags<CR>
+nnoremap <leader>b        :Gblame<CR>
+
+" gutentags
+" let g:gutentags_ctags_exclude=["node_modules", "plugged", "tmp", "temp", "log",
+"        \"vendor", "test", "spec", "app/assets", "*.js", "*.go", "*.css", "*.html",
+"              \"*.jsx", "*.json", ".yaml", "test"]
+
+" TagBar
+nnoremap <F2> :Tagbar<CR>
+
+" Statusline
+" set statusline+=%{gutentags#statusline()}
+
