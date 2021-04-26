@@ -23,66 +23,15 @@ set termguicolors
 hi CursorLine guifg=NONE guisp=NONE gui=NONE cterm=bold
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'majutsushi/tagbar'
-
-Plug 'jonathanfilip/vim-lucius'
-
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
-Plug 'Vimjas/vim-python-pep8-indent'
-
-Plug 'tweekmonster/impsort.vim'
-
-Plug 'wsdjeg/FlyGrep.vim'
-
-Plug 'airblade/vim-gitgutter'
-
-Plug 'roxma/nvim-yarp'
-
-Plug 'Konfekt/FastFold'
-
-Plug 'tmhedberg/SimpylFold'
-
-Plug 'vim-scripts/indentpython.vim'
-
-Plug 'dense-analysis/ale'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 Plug 'tpope/vim-surround'
-
-Plug 'preservim/nerdtree'
-
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-Plug 'morhetz/gruvbox'
-
 Plug 'rakr/vim-one'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
 Plug 'junegunn/fzf.vim'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'craigemery/vim-autotag'
-
 Plug 'tpope/vim-fugitive'
-
-Plug 'vim-ruby/vim-ruby'
-
-Plug 'kjssad/quantum.vim'
-
-Plug 'NLKNguyen/papercolor-theme'
-
-Plug 'ayu-theme/ayu-vim'
 call plug#end()
 filetype indent plugin on
 
@@ -105,9 +54,6 @@ set cursorline
 set showmatch
 
 let python_highlight_all = 1
-
-let g:python3_host_prog = '/usr/bin/python3'
-let g:python_host_prog='/usr/bin/python'
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -144,7 +90,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-set background=light
+set background=dark
 " ==================
 " || Lucius Theme ||
 " ==================
@@ -160,8 +106,8 @@ set background=light
 " ===============
 " || One Theme ||
 " ===============
-colorscheme one
-" colorscheme onehalfdark
+" colorscheme one
+colorscheme onehalfdark
 
 set completeopt=menuone,noselect,noinsert
 let ncm2#popup_delay = 5
@@ -235,8 +181,6 @@ let vim_markdown_preview_use_xdg_open=1
 let g:LanguageClient_serverCommands = {
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio']
     \ }
-
-set noesckeys
 
 " fzf configuration
 " Jump to an existing buffer if possible
